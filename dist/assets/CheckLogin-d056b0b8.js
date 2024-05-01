@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";const r={mounted(){const t=this.$route.query.nextURL;this.$store.isApproved&&t&&this.$router.replace({path:t,params:this.$route.params})}};function s(t,o,n,a,p,c){return null}const u=e(r,[["render",s]]);export{u as default};

@@ -1,0 +1,1 @@
+function a(){const e=t=>t?new Date(t).toLocaleString():null,r=t=>t?new Date(t).toLocaleDateString():null;return{formatDateTime:e,formatDate:r,formatTime:t=>t?new Date(t).toLocaleTimeString():null,formatDateOrTime:t=>t.date?r(t.date):t.time}}export{a as u};
