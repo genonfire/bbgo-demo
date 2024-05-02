@@ -10,7 +10,7 @@ export default {
             "first_name": "John",
             "last_name": "Doe",
             "call_name": "John Doe",
-            "photo": "/rocat.png",
+            "photo": "/bbgo-demo/rocat.png",
             "is_staff": true,
             "is_approved": true
           }
@@ -27,7 +27,7 @@ export default {
             "first_name": "John",
             "last_name": "Doe",
             "call_name": "John Doe",
-            "photo": "/rocat.png",
+            "photo": "/bbgo-demo/rocat.png",
             "is_staff": true,
             "is_approved": true
           }
@@ -52,7 +52,7 @@ export default {
           "first_name": "John",
           "last_name": "Doe",
           "call_name": "John Doe",
-          "photo": "/rocat.png",
+          "photo": "/bbgo-demo/rocat.png",
           "tel": null,
           "address": "Cloverfield 101",
           "is_approved": true,
@@ -74,7 +74,7 @@ export default {
           "first_name": "John",
           "last_name": "Doe",
           "call_name": "John Doe",
-          "photo": "/rocat.png",
+          "photo": "/bbgo-demo/rocat.png",
           "tel": null,
           "address": "Cloverfield 101",
           "is_approved": true,
@@ -153,7 +153,7 @@ export default {
             "first_name": "John",
             "last_name": "Doe",
             "call_name": "John Doe",
-            "photo": "/rocat.png",
+            "photo": "/bbgo-demo/rocat.png",
             "tel": null,
             "address": "Cloverfield 101",
             "is_active": true,
@@ -191,7 +191,7 @@ export default {
           "first_name": "John",
           "last_name": "Doe",
           "call_name": "John Doe",
-          "photo": "/rocat.png",
+          "photo": "/bbgo-demo/rocat.png",
           "tel": null,
           "address": "Cloverfield 101",
           "is_active": true,
@@ -228,7 +228,7 @@ export default {
             "category": "asmr",
             "image": {
               "id": 2,
-              "file": "/nature.png",
+              "file": "/bbgo-demo/nature.png",
               "filename": "nature.png",
               "content_type": "image/png",
               "size": 94291,
@@ -252,7 +252,7 @@ export default {
             "category": "asmr",
             "image": {
               "id": 1,
-              "file": "/rocat_rect.png",
+              "file": "/bbgo-demo/rocat_rect.png",
               "filename": "rocat_rect.png",
               "content_type": "image/png",
               "size": 13267,
@@ -282,7 +282,7 @@ export default {
           "category": "asmr",
           "image": {
             "id": 1,
-            "file": "/rocat_rect.png",
+            "file": "/bbgo-demo/rocat_rect.png",
             "filename": "rocat_rect.png",
             "content_type": "image/png",
             "size": 13267,
@@ -313,7 +313,7 @@ export default {
           "category": "asmr",
           "image": {
             "id": 2,
-            "file": "/nature.png",
+            "file": "/bbgo-demo/nature.png",
             "filename": "nature.png",
             "content_type": "image/png",
             "size": 94291,
@@ -695,7 +695,7 @@ export default {
           },
           "name": null,
           "title": "My Adorable Cheese Cat 🧀🐱",
-          "content": "<img src='/rocat_rect.png'><br><br>Hey Community fam,<br><br>I just wanted to share with you all my adorable cheese-loving cat! Meet Whiskers, the most charming feline companion you'll ever meet. 😺🧀<br><br>Whiskers has a peculiar fondness for cheese that never fails to bring a smile to my face. Whether it's sneaking bites from my sandwich or eagerly waiting for his cheesy treat, his love for cheese is truly unmatched. Just the sight of a cheese wrapper makes him perk up with excitement, ready to indulge in his favorite snack.<br><br>But beyond his love for cheese, Whiskers is also the epitome of cuddliness and playfulness. His soft purrs and gentle nuzzles never fail to brighten my day, and his playful antics keep me entertained for hours on end.<br><br>I feel incredibly lucky to have Whiskers in my life, spreading joy and cheese wherever he goes. 🧀🐾<br><br>Cheers,<br>",
+          "content": "<img src='/bbgo-demo/rocat_rect.png'><br><br>Hey Community fam,<br><br>I just wanted to share with you all my adorable cheese-loving cat! Meet Whiskers, the most charming feline companion you'll ever meet. 😺🧀<br><br>Whiskers has a peculiar fondness for cheese that never fails to bring a smile to my face. Whether it's sneaking bites from my sandwich or eagerly waiting for his cheesy treat, his love for cheese is truly unmatched. Just the sight of a cheese wrapper makes him perk up with excitement, ready to indulge in his favorite snack.<br><br>But beyond his love for cheese, Whiskers is also the epitome of cuddliness and playfulness. His soft purrs and gentle nuzzles never fail to brighten my day, and his playful antics keep me entertained for hours on end.<br><br>I feel incredibly lucky to have Whiskers in my life, spreading joy and cheese wherever he goes. 🧀🐾<br><br>Cheers,<br>",
           "files": [],
           "up": 0,
           "down": 0,
