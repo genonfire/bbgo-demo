@@ -288,7 +288,7 @@ export default {
       imageDialog: false,
       imageTab: null,
       fileURL: null,
-      linkURL: '/nature.png',
+      linkURL: '/bbgo-demo/nature.png',
       file: null,
     }
   },
