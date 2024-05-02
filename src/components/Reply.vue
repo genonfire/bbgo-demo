@@ -224,8 +224,6 @@ export default {
       const vm = this
       const url = `${this.$api('THREAD_REPLIES').url.replace('{pk}', this.thread.id)}?page_size=${this.pageSize}`
 
-      console.log(url)
-
       this.$axios({
         method: this.$api('THREAD_REPLIES').method,
         url: url,

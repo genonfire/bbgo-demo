@@ -26,7 +26,6 @@ function mockResponse(config, responses) {
   if (result) {
     status = result.status || 200
     response = result.response || {}
-    console.log(config.method, config.url, 'returns', status)
   }
 
   return [status, response]

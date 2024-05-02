@@ -192,7 +192,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.blogOption)
     if (!this.blogOption) {
       this.getBlogOption()
     }
@@ -219,7 +218,6 @@ export default {
       .then(function (response) {
         vm.blogOption = response.data['data']
         vm.init = true
-        console.log(vm.blogOption)
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'BLOG_OPTION'))

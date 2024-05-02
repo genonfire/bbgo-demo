@@ -185,7 +185,6 @@ export default {
       }
 
       let url = `${this.$api('ADMIN_THREADS').url}${active}`
-      console.log(url)
 
       this.$axios({
         method: this.$api('ADMIN_THREADS').method,

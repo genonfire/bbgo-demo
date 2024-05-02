@@ -489,7 +489,6 @@ export default {
       })
       .then(function (response) {
         vm.forum = response.data['data']
-        console.log(vm.forum)
         vm.managers = vm.dataToItems(response.data['data']['managers'])
       })
       .catch(function (error) {
