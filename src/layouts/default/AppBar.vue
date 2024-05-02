@@ -108,7 +108,6 @@ export default {
       this.$refs.search.blur()
     },
     onEnter() {
-      this.searchAnything(this.search)
     },
     searchAnything(search) {
       this.onEsc()

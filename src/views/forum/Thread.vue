@@ -178,7 +178,7 @@ export default {
         q = '&q=' + search
       }
 
-      let url = `${this.$api('THREAD_LIST').url}?page_size=${this.pageSize}&page=${page}${q}`
+      let url = `${this.$api('THREAD_LIST').url}`
 
       this.$axios({
         method: this.$api('THREAD_LIST').method,

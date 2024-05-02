@@ -26,7 +26,7 @@
           variant="outlined"
           prepend-icon="mdi-microsoft-excel"
           color="secondary"
-          :disabled="staff"
+          disabled
           @click="exportExcel"
         >
           {{ $t('action.EXPORT') }}
@@ -178,6 +178,7 @@
                 variant="outlined"
                 color="secondary"
                 @click="uploadPhoto"
+                disabled
               >
                 {{ $t('accounts.UPLOAD_PHOTO') }}
               </v-btn>
@@ -193,6 +194,7 @@
                 color="pale"
                 class="ml-4"
                 @click="deletePhoto"
+                disabled
               >
                 {{ $t('action.REMOVE') }}
               </v-btn>
@@ -480,10 +482,10 @@ export default {
 
       let active = ''
       if (this.active) {
-        active = '&active=' + this.active
+        active = 'active=' + this.active
       }
 
-      let url = `${this.$api(api).url}?page_size=${this.pageSize}&page=${page}${active}${q}`
+      let url = `${this.$api(api).url}?${active}`
 
       this.$axios({
         method: this.$api(api).method,

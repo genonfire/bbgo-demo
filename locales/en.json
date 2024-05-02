@@ -17,6 +17,7 @@
     "menu": {
         "HOME": "Home",
         "BLOG": "Blog",
+        "FORUM": "Forum",
         "SETTINGS": "Settings",
         "PROFILE": "Profile",
         "FIND_PASSWORD": "Find password",
@@ -216,10 +217,14 @@
         "SIGNUP_COMPLETE": "Signup completed.",
         "HELLO_USER": "Hello {call_name}!",
         "LOGOUT_COMPLETE": "You are Successfully logged out.",
-        "CREATED_SUCCESSFULLY": "Created successfully.",
-        "SAVED_SUCCESSFULLY": "Saved successfully.",
-        "DELETED_SUCCESSFULLY": "Deleted successfully.",
-        "RESTORED_SUCCESSFULLY": "Restored successfully.",
+        "CREATED_SUCCESSFULLY": "We pretended to create it.",
+        "SAVED_SUCCESSFULLY": "We pretended to save it.",
+        "DELETED_SUCCESSFULLY": "We pretended to delete it.",
+        "RESTORED_SUCCESSFULLY": "We pretended to restore it.",
+        "REAL_CREATED_SUCCESSFULLY": "생성했습니다.",
+        "REAL_SAVED_SUCCESSFULLY": "저장했습니다.",
+        "REAL_DELETED_SUCCESSFULLY": "Deleted successfully.",
+        "REAL_RESTORED_SUCCESSFULLY": "Restored successfully.",
         "LIKED_SUCCESSFULLY": "Liked successfully."
     },
     "error": {
@@ -233,5 +238,8 @@
     },
     "info": {
         "SITENAME": "bbgo"
+    },
+    "demo": {
+        "DEMO_BANNER": "This is a UI demo, some features, such as database-dependent searches, saving, may not work as intended."
     }
 }

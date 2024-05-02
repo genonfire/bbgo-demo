@@ -29,7 +29,6 @@ import { useTheme } from 'vuetify'
 import { useI18n } from 'vue-i18n'
 import { Toaster } from 'vue-sonner'
 import { useAppStore } from '@/store/app'
-import axios from 'axios'
 
 const firstInit = ref(false)
 const initialized = reactive({ firstInit })
@@ -62,15 +61,7 @@ onMounted(() => {
     store.setLocale(locale.value)
   }
 
-  if (localLocale && store.const('DEFAULT_LANGUAGE') != localLocale) {
-    prefix = localLocale + '/'
-  }
-
-  axios.defaults.baseURL = (
-    import.meta.env.VITE_API_URL + prefix + import.meta.env.VITE_API_PREFIX
-  )
-
-  axios({
+  proxy.$axios({
     method: proxy.$api('BLOG_OPTION').method,
     url: proxy.$api('BLOG_OPTION').url,
   })
@@ -79,7 +70,7 @@ onMounted(() => {
   })
 
   if (localToken) {
-    axios({
+    proxy.$axios({
       method: proxy.$api('ACCOUNTS_CONNECT').method,
       url: proxy.$api('ACCOUNTS_CONNECT').url,
       headers: {
@@ -90,7 +81,6 @@ onMounted(() => {
       store.setToken(response.data['data']['key'], false)
       store.setUser(response.data['data']['user'], false)
 
-      axios.defaults.headers.common['Authorization'] = 'Token ' + localToken
       firstInit.value = true
     })
     .catch(function (error) {

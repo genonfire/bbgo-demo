@@ -8,7 +8,7 @@ import AdminRoutes from '@/router/admin'
 
 const routes = [
   {
-    path: '/',
+    path: '/bbgo-demo/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
@@ -19,28 +19,28 @@ const routes = [
     ]
   },
   {
-    path: '/accounts/',
+    path: '/bbgo-demo/accounts/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...AccountsRoutes,
     ]
   },
   {
-    path: '/blogs/',
+    path: '/bbgo-demo/blogs/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...BlogRoutes,
     ]
   },
   {
-    path: '/forum/',
+    path: '/bbgo-demo/forum/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...ForumRoutes,
     ]
   },
   {
-    path: '/admin/',
+    path: '/bbgo-demo/admin/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       ...AdminRoutes
@@ -54,29 +54,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const store = useAppStore()
-
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.isApproved) {
-      next({
-        name: 'accounts.check.login',
-        query: {
-          nextURL: to.path
-        }
-      })
-    }
-    else if (to.matched.some(record => record.meta.StaffOnly)) {
-      if (!store.isStaff) {
-        next(false)
-      }
-    }
-    else {
-      next()
-    }
-  }
-  else {
-    next()
-  }
+  next()
 })
 
 export default router

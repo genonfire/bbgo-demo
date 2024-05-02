@@ -185,10 +185,10 @@ export default {
 
       let active = ''
       if (this.active) {
-        active = '&delete=' + this.delete
+        active = 'delete=' + this.delete
       }
 
-      let url = `${this.$api('ADMIN_COMMENTS').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
+      let url = `${this.$api('ADMIN_COMMENTS').url}?${active}`
 
       this.$axios({
         method: this.$api('ADMIN_COMMENTS').method,

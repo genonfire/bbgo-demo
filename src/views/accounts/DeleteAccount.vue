@@ -95,7 +95,6 @@ export default {
         },
       })
       .then(function (response) {
-        vm.$axios.defaults.headers.common['Authorization'] = ''
         vm.$store.logout()
         vm.done = true
       })

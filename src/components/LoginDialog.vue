@@ -121,15 +121,15 @@ export default {
     return {
       dialog: false,
       validation: false,
-      username: null,
-      password: null,
+      username: '1@a.com',
+      password: 'passwordistoolong',
       showPassword: false,
-      remember: false,
+      remember: true,
     }
   },
   beforeUpdate() {
-    this.username = null
-    this.password = null
+    // this.username = null
+    // this.password = null
   },
   methods: {
     login() {

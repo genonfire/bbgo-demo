@@ -140,7 +140,7 @@ export default {
         q = '&q=' + search
       }
 
-      let url = `${this.$api('THREAD_TRASH').url}?page_size=${this.pageSize}&page=${page}${q}`
+      let url = `${this.$api('THREAD_TRASH').url}?page_size=${this.pageSize}`
 
       this.$axios({
         method: this.$api('THREAD_TRASH').method,

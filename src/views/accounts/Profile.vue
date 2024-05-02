@@ -49,7 +49,7 @@
             <v-btn
               variant="outlined"
               color="secondary"
-              @click="uploadPhoto"
+              disabled
             >
               {{ $t('accounts.UPLOAD_PHOTO') }}
             </v-btn>
@@ -57,14 +57,14 @@
               v-model="file"
               accept="image/*"
               ref="fileInput"
-              @change="handleFileChange"
+              @change=""
               style="display:none;"
             ></v-file-input>
             <v-btn
               variant="text"
               color="pale"
               class="ml-4"
-              @click="deletePhoto"
+              disabled
             >
               {{ $t('action.REMOVE') }}
             </v-btn>

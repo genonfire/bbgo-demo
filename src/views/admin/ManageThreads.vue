@@ -181,10 +181,11 @@ export default {
 
       let active = ''
       if (this.active) {
-        active = '&delete=' + this.delete
+        active = 'deleted' + this.delete
       }
 
-      let url = `${this.$api('ADMIN_THREADS').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
+      let url = `${this.$api('ADMIN_THREADS').url}${active}`
+      console.log(url)
 
       this.$axios({
         method: this.$api('ADMIN_THREADS').method,
@@ -211,7 +212,6 @@ export default {
       }
     },
     onEnter() {
-      this.getThreads()
     },
   }
 }

@@ -192,6 +192,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.blogOption)
     if (!this.blogOption) {
       this.getBlogOption()
     }
@@ -218,6 +219,7 @@ export default {
       .then(function (response) {
         vm.blogOption = response.data['data']
         vm.init = true
+        console.log(vm.blogOption)
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'BLOG_OPTION'))
@@ -249,12 +251,12 @@ export default {
         tag = '&tag=' + this.tag
       }
 
-      let category = ''
+      let category = 'category='
       if (this.category && this.category != '') {
-        category = '&category=' + this.category
+        category = 'category=' + this.category
       }
 
-      let url = `${this.$api('BLOG_LIST').url}?page_size=${this.pageSize}&page=${page}${tag}${category}${q}`
+      let url = `${this.$api('BLOG_LIST').url}?${category}${tag}${q}`
 
       this.$axios({
         method: this.$api('BLOG_LIST').method,

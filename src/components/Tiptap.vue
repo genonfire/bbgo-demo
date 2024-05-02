@@ -169,11 +169,11 @@
         color="secondary"
         grow
       >
-        <v-tab value="upload">
-          {{ $t('tiptap.IMAGE_UPLOAD') }}
-        </v-tab>
         <v-tab value="link">
           {{ $t('tiptap.IMAGE_LINK') }}
+        </v-tab>
+        <v-tab value="upload">
+          {{ $t('tiptap.IMAGE_UPLOAD') }}
         </v-tab>
       </v-tabs>
 
@@ -196,6 +196,7 @@
                 @change="handleFileChange"
                 @click:clear="clearFile"
                 show-size
+                disabled
               >
               </v-file-input>
             </v-card-text>
@@ -206,6 +207,7 @@
               <v-btn
                 color="secondary"
                 @click="insertImage(fileURL)"
+                :disabled="!fileURL"
               >
                 {{ $t('tiptap.INSERT_IMAGE') }}
               </v-btn>
@@ -232,6 +234,7 @@
               <v-btn
                 color="secondary"
                 @click="insertImage(linkURL)"
+                :disabled="!linkURL"
               >
                 {{ $t('tiptap.INSERT_IMAGE') }}
               </v-btn>
@@ -285,7 +288,7 @@ export default {
       imageDialog: false,
       imageTab: null,
       fileURL: null,
-      linkURL: null,
+      linkURL: '/nature.png',
       file: null,
     }
   },
@@ -333,7 +336,8 @@ export default {
     openImageTab() {
       this.file = null
       this.fileURL = null
-      this.linkURL = null
+      // this.linkURL = null
+      this.imageTab = 'link'
       this.imageDialog = true
     },
     imageUpload(data) {

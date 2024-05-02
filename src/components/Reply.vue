@@ -9,7 +9,7 @@
         prepend-icon="mdi-message-reply-outline"
         class="px-4 mr-2"
       >
-        {{ thread.reply_count }}
+        {{ replyCount }}
       </v-chip>
       <v-btn
         variant="outlined"
@@ -97,6 +97,7 @@
             variant="text"
             prepend-icon="mdi-message-reply-outline"
             @click="replying[index] = true"
+            v-if="thread.forum.permissions.reply"
           >
             {{ $t('forum.REPLY') }}
           </v-btn>
@@ -104,7 +105,7 @@
             variant="text"
             prepend-icon="mdi-trash-can-outline"
             color="secondary"
-            @click="deleteReply(reply.id)"
+            @click="deleteReply(reply.id, index)"
             v-if="reply.editable"
           >
             {{ $t('action.DELETE') }}
@@ -183,6 +184,7 @@ export default {
     },
   data() {
     return {
+      replyCount: this.thread.reply_count || 0,
       replies: null,
       dataStored: [],
       nextLink: null,
@@ -222,6 +224,8 @@ export default {
       const vm = this
       const url = `${this.$api('THREAD_REPLIES').url.replace('{pk}', this.thread.id)}?page_size=${this.pageSize}`
 
+      console.log(url)
+
       this.$axios({
         method: this.$api('THREAD_REPLIES').method,
         url: url,
@@ -247,7 +251,7 @@ export default {
       })
     },
     updateData() {
-      this.replies = [...this.replies, ...this.dataStored]
+      this.replyCount = this.replies.length
       this.replying = new Array(this.replies.length).fill(false)
       this.textareas = new Array(this.replies.length).fill(null)
       this.commenting = false
@@ -310,13 +314,28 @@ export default {
         data: data
       })
       .then(function (response) {
-        vm.getReplies()
+        let reply = data
+        reply['id'] = vm.replies.length + 1
+        reply['thread'] = vm.thread
+        reply['user'] = {
+          id: 2,
+          username: "1@a.com",
+          call_name: "John Doe"
+        }
+        reply['is_deleted'] = false
+        reply['date_or_time'] = {
+          'date': null,
+          'time': new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        }
+        reply['editable'] = true
+        vm.replies.splice(index + 1, 0, reply)
+        vm.updateData()
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'THREAD_REPLY'))
       })
     },
-    deleteReply(replyId) {
+    deleteReply(replyId, index) {
       const vm = this
 
       if (confirm(this.$t('forum.DELETE_REPLY'))) {
@@ -325,8 +344,9 @@ export default {
           url: this.$api('REPLY_DELETE').url.replace('{pk}', replyId),
         })
         .then(function (response) {
-          vm.getReplies()
-          vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
+          vm.replies[index]['is_deleted'] = true
+          vm.updateData()
+          vm.$toast.success(vm.$t('message.REAL_DELETED_SUCCESSFULLY'))
         })
         .catch(function (error) {
           vm.$toast.error(vm.$error(error, 'REPLY_DELETE'))

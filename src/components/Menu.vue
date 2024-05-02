@@ -114,6 +114,16 @@ export default {
           icon: 'mdi-post-outline',
           to: { name: 'blogs' }
         },
+        {
+          text: this.$t('menu.FORUM'),
+          icon: 'mdi-home-group',
+          to: {
+            name: 'thread',
+            params: {
+              forum: 'illegallysmolcats'
+            }
+          }
+        },
       ]
       return items
     },
@@ -138,11 +148,6 @@ export default {
           text: this.$t('menu.MANAGE_THREADS'),
           icon: 'mdi-message-reply-outline',
           to: { name: 'admin.threads' }
-        },
-        {
-          text: this.$t('menu.SITE_ADMIN'),
-          icon: 'mdi-view-grid',
-          url: import.meta.env.VITE_API_URL + 'admin/'
         },
       ]
       return items

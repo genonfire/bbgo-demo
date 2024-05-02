@@ -204,12 +204,7 @@ export default {
         vm.saved = true
         vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
 
-        if (response.data['data']['is_published']) {
-          vm.$router.back()
-        }
-        else {
-          vm.$router.push({ name: 'blogs' })
-        }
+        vm.$router.push({ name: 'blogs' })
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'EDIT_BLOG'))

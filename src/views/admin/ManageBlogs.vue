@@ -377,7 +377,7 @@ export default {
 
       let active = ''
       if (this.active) {
-        active = '&draft=' + this.draft
+        active = 'draft=' + this.draft
       }
 
       let category = ''
@@ -385,7 +385,7 @@ export default {
         category = '&category=' + this.category
       }
 
-      let url = `${this.$api('ADMIN_BLOGS').url}?page_size=${this.pageSize}&page=${page}${active}${category}${q}`
+      let url = `${this.$api('ADMIN_BLOGS').url}?${active}${category}`
 
       this.$axios({
         method: this.$api('ADMIN_BLOGS').method,
@@ -393,8 +393,10 @@ export default {
       })
       .then(function (response) {
         vm.pagination = response.data['pagination']
-        vm.categoryItems = response.data['filter']['category']
         vm.blogs = response.data['data']
+        if (response.data['filter']) {
+          vm.categoryItems = response.data['filter']['category']
+        }
 
         vm.init = true
       })
@@ -406,7 +408,6 @@ export default {
       this.getBlogs()
     },
     onEnter() {
-      this.getBlogs()
     },
     onTabUpdate() {
       this.active = null

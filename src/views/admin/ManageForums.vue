@@ -439,7 +439,7 @@ export default {
 
       this.$axios({
         method: this.$api('ADMIN_STAFFS').method,
-        url: this.$api('ADMIN_STAFFS').url,
+        url: this.$api('ADMIN_STAFFS').url + '?',
       })
       .then(function (response) {
         vm.managerList = vm.dataToItems(response.data['data'])
@@ -458,10 +458,10 @@ export default {
 
       let active = ''
       if (this.active) {
-        active = '&active=' + this.active
+        active = 'active=' + this.active
       }
 
-      let url = `${this.$api('FORUMS').url}?page_size=${this.pageSize}&page=${page}${active}${q}`
+      let url = `${this.$api('FORUMS').url}?${active}`
 
       this.$axios({
         method: this.$api('FORUMS').method,
@@ -489,6 +489,7 @@ export default {
       })
       .then(function (response) {
         vm.forum = response.data['data']
+        console.log(vm.forum)
         vm.managers = vm.dataToItems(response.data['data']['managers'])
       })
       .catch(function (error) {
@@ -573,8 +574,7 @@ export default {
           vm.$toast.success(vm.$t('message.CREATED_SUCCESSFULLY'))
         }
         else {
-          vm.forum = response.data['data']
-          vm.managers = vm.dataToItems(response.data['data']['managers'])
+          vm.dialog = false
           vm.$toast.success(vm.$t('message.SAVED_SUCCESSFULLY'))
         }
       })

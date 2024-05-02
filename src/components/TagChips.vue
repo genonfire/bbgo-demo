@@ -37,12 +37,6 @@ export default {
   },
   methods: {
     onTagClick(tag) {
-      this.$router.push({
-        name: 'blogs',
-        query: {
-          tag: tag,
-        }
-      })
     }
   }
 }

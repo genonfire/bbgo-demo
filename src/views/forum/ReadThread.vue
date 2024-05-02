@@ -103,7 +103,7 @@
           v-if="thread.is_pinned"
         ></v-icon>
         <span
-          v-if="$store.isStaff"
+          v-if="$store.isStaff && !thread.is_deleted"
         >
           <a
             style="cursor: pointer;"
@@ -270,7 +270,7 @@ export default {
         url: this.$api(api).url.replace('{forum}', this.thread.forum.name).replace('{pk}', this.thread.id),
       })
       .then(function (response) {
-        vm.thread = response.data['data']
+        vm.thread.is_pinned = !vm.thread.is_pinned
 
         if (vm.thread.is_pinned) {
           vm.$toast.success(vm.$t('forum.THREAD_PINNED'))

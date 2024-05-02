@@ -9,7 +9,7 @@
         prepend-icon="mdi-message-reply-outline"
         class="px-4 mr-2"
       >
-        {{ blog.comment_count }}
+        {{ commentCount }}
       </v-chip>
       <v-btn
         variant="outlined"
@@ -104,7 +104,7 @@
             variant="text"
             prepend-icon="mdi-trash-can-outline"
             color="secondary"
-            @click="deleteComment(comment.id)"
+            @click="deleteComment(comment.id, index)"
             v-if="comment.editable"
           >
             {{ $t('action.DELETE') }}
@@ -183,6 +183,7 @@ export default {
     },
   data() {
     return {
+      commentCount: this.blog.comment_count || 0,
       comments: null,
       dataStored: [],
       nextLink: null,
@@ -247,7 +248,7 @@ export default {
       })
     },
     updateData() {
-      this.comments = [...this.comments, ...this.dataStored]
+      this.commentCount = this.comments.length
       this.replying = new Array(this.comments.length).fill(false)
       this.textareas = new Array(this.comments.length).fill(null)
       this.commenting = false
@@ -310,13 +311,28 @@ export default {
         data: data
       })
       .then(function (response) {
-        vm.getComments()
+        let comment = data
+        comment['id'] = vm.comments.length + 1
+        comment['blog'] = vm.blog
+        comment['user'] = {
+          id: 2,
+          username: "1@a.com",
+          call_name: "John Doe"
+        }
+        comment['is_deleted'] = false
+        comment['date_or_time'] = {
+          'date': null,
+          'time': new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        }
+        comment['editable'] = true
+        vm.comments.splice(index + 1, 0, comment)
+        vm.updateData()
       })
       .catch(function (error) {
         vm.$toast.error(vm.$error(error, 'BLOG_COMMENT'))
       })
     },
-    deleteComment(commentId) {
+    deleteComment(commentId, index) {
       const vm = this
 
       if (confirm(this.$t('blog.DELETE_COMMENT'))) {
@@ -325,8 +341,9 @@ export default {
           url: this.$api('DELETE_COMMENT').url.replace('{pk}', commentId),
         })
         .then(function (response) {
-          vm.getComments()
-          vm.$toast.success(vm.$t('message.DELETED_SUCCESSFULLY'))
+          vm.comments[index]['is_deleted'] = true
+          vm.updateData()
+          vm.$toast.success(vm.$t('message.REAL_DELETED_SUCCESSFULLY'))
         })
         .catch(function (error) {
           vm.$toast.error(vm.$error(error, 'DELETE_COMMENT'))
