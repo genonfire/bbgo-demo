@@ -1,1 +1,1 @@
-import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";const t={mounted(){this.$router.replace({name:"blogs"})}};function o(r,n,s,c,a,_){return null}const u=e(t,[["render",o]]);export{u as default};
+import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";const t={mounted(){this.$router.replace({name:"blogs"})}};function o(r,n,s,c,a,_){return null}const u=e(t,[["render",o]]);export{u as default};
